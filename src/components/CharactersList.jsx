@@ -67,6 +67,7 @@ export class CharactersList extends React.Component {
                     key={character._id}
                     updateCharacter={this.updateCharacter}
                     deleteCharacter={this.deleteCharacter}
+                    handleChange={this.handleChange}
                 />
                ))}
             </div>

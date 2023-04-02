@@ -39,8 +39,8 @@ export const Character = (props) => {
             <button onClick={(e) => deleteCharacter(character._id)}>Delete Character</button>
             <br />
             {/* Update Character Function */}
-            <input placeholder="Enter new name here" onClick={(e) => updateCharacter(character._id)}></input>
-            <button>Update Character</button>
+            <input placeholder="Enter new name here"></input>
+            <button onClick={(e) => updateCharacter(character._id)}>Update Character</button>
             {/* Display the Information elements from their Array, Unique to each Character */}
             {
                 infos({ infos, characterId: character._id, deleteInfo })
