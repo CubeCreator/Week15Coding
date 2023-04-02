@@ -23,10 +23,24 @@ export class CharactersList extends React.Component {
         this.setState({ characters })
     };
 
+//Creating new Characters in the Array
+    createCharacter = async (newCharacter) => {
+        await charactersAPI.post(newCharacter)
+        this.fetchCharacters();
+    };
+
+    //Delete Character Code
+    deleteCharacter = async (character) => {
+        await charactersAPI.delete()
+        this.fetchCharacters(character);
+        console.log(character)
+    }
+
 //Updating Values in the Array
-    updateHouse = async (updatedCharacter) => {
+    updateCharacter = async (updatedCharacter) => {
         await charactersAPI.put(updatedCharacter)
         this.fetchCharacters();
+        console.log(updatedCharacter)
     };
 
     handleChange = (e) => {
@@ -34,16 +48,25 @@ export class CharactersList extends React.Component {
         if (id == "newName") {
             this.setState({ newNameInput: e.target.value })
         }
+        console.log(this.state.newNameInput)
     };
 
+    //Render the App
     render() {
         return (
+            //Header of the Application
             <div className="character-list">
+                <h1>Character CRUD App</h1>
+                <input placeholder="Character Name" defaultValue={this.state.newNameInput} onChange={this.handleChange} id="newName"></input>
+                <button onClick={() => this.createCharacter(this.state.newNameInput)}>Create Character</button>
+                <br />
+            {/* List of the API Character elements  */}
                {this.state.characters.map((character) => (
                 <Character
                     character={character}
                     key={character._id}
-                    updateHouse={this.updateHouse}
+                    updateCharacter={this.updateCharacter}
+                    deleteCharacter={this.deleteCharacter}
                 />
                ))}
             </div>

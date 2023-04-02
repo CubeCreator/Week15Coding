@@ -4,6 +4,7 @@ export const NewInfoForm = (props) => {
     const [name, setName] = useState('');
     const [content, setContent] = useState(undefined);
 
+    //Code to handle the Submission of Information Data
     const onSubmit = (e) => {
         e.preventDefault()
         if (name && content) {
@@ -16,6 +17,7 @@ export const NewInfoForm = (props) => {
     }
 
     return (
+        //Display the Form to Add Information about the Character
         <div>
             <h4>Add Character Info</h4>
             <form onSubmit={onSubmit}>
@@ -31,6 +33,7 @@ export const NewInfoForm = (props) => {
                     onChange={(e) => setContent(e.target.value)}
                     value={content}
                 />
+                <br />
                 <button type='submit'>Add Info</button>
             </form>
         </div>
